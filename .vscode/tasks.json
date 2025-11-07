@@ -7,7 +7,7 @@
             "command": "powershell",
             "args": [
                 "-Command",
-                "git add -A; if ($?) { git commit -m 'Auto-commit: $(Get-Date -Format \"yyyy-MM-dd HH:mm:ss\")' }; if ($?) { git push }"
+                "git add -A; if ($?) { git commit -m \"Auto-commit: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')\" }; if ($?) { git push }"
             ],
             "group": "build",
             "presentation": {
