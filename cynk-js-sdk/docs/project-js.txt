@@ -44,7 +44,7 @@ cynk-js-sdk/
 │   │   ├── metadata-manager.ts
 │   │   ├── resource-packer.ts
 │   │   ├── compression-manager.ts
-│   │   └── package-metadata.ts      # NEW: CPGX metadata embedding
+│   │   └── package-metadata.ts    
 │   │
 │   ├── templates/
 │   │   ├── basic-js.tmpl

@@ -26,7 +26,7 @@ export const CompatibilityInfoSchema = z.object({
 });
 
 export const PluginMetadataSchema = z.object({
-  id: z.string().uuid(),
+  id: z.uuid(),
   name: z.string().min(1).max(100),
   version: z.string().regex(/^\d+\.\d+\.\d+$/),
   description: z.string().max(1000).optional(),
