@@ -3,11 +3,13 @@
   "tasks": [
     {
       "label": "Auto Git Push",
-      "type": "shell",
-      "command": "powershell",
+      "type": "process",
+      "command": "powershell.exe",
       "args": [
-        "-Command",
-        "git add -A; if ($LASTEXITCODE -eq 0) { $timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'; git commit -m \\\"Auto-commit: $timestamp\\\" }; if ($LASTEXITCODE -eq 0) { git push }"
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}\\.vscode\\auto-git-push.ps1"
       ],
       "group": "build",
       "presentation": {
