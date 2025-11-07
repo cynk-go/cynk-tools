@@ -1,32 +1,25 @@
-cynk-cli/                             ===> Enhanced CLI Tool
+cynk-cli/                             ===> Main CLI Tool Project
 ├── cmd/
 │   └── cynk-cli/                     ===> CLI Entry Point
-│       ├── main.go                   // CLI bootstrap, colored output setup
+│       ├── main.go                   // CLI bootstrap and command routing
 │       ├── init.go                   // `cynk-cli init` - Create new plugins
 │       ├── pack.go                   // `cynk-cli pack` - Create .cpgx packages
 │       ├── sign.go                   // `cynk-cli sign` - Cryptographic signing
 │       ├── verify.go                 // `cynk-cli verify` - Package verification
-│       ├── publish.go                // `cynk-cli publish` - Upload to cynk
-│       ├── validate.go               // `cynk-cli validate` - Project validation
-│       ├── template.go               // `cynk-cli template` - Template management
-│       ├── manifest.go               // `cynk-cli manifest` - Manifest generation
-│       ├── key.go                    // `cynk-cli key` - Key management
+│       ├── publish.go                // `cynk-cli publish` - Marketplace publishing
+│       ├── validate.go               // `cynk-cli validate` - Pre-packaging validation
 │       ├── info.go                   // `cynk-cli info` - Package inspection
-│       ├── extract.go                // `cynk-cli extract` - Extract .cpgx
-│       ├── config.go                 // `cynk-cli config` - CLI configuration
-│       ├── login.go                  // `cynk-cli login` - Authentication
-│       └── version.go                // `cynk-cli version` - Version info
+│       ├── unpack.go                 // `cynk-cli unpack` - Extract .cpgx contents
+│       └── login.go                  // `cynk-cli login` - Authentication
 ├── pkg/
 │   ├── cpgx/                         ===> .cpgx Format Handling
 │   │   ├── packer.go                 // Create .cpgx packages
-│   │   ├── structure_builder.go      // Build package structure
-│   │   ├── compression.go            // Compression algorithms
 │   │   ├── extractor.go              // Extract .cpgx contents
 │   │   ├── signer.go                 // Add cryptographic signatures
 │   │   ├── verifier.go               // Verify package integrity
 │   │   ├── validator.go              // Validate .cpgx structure
 │   │   ├── metadata.go               // Read package metadata
-│   │   └── format.go                 // .cpgx format constants
+│   │   └── format.go                 // .cpgx format constants and types
 │   │
 │   ├── manifest/                     ===> Manifest Processing
 │   │   ├── generator.go              // Generate manifest.json templates
@@ -34,130 +27,39 @@ cynk-cli/                             ===> Enhanced CLI Tool
 │   │   ├── validator.go              // Schema validation
 │   │   ├── schema.go                 // JSON schema definitions
 │   │   ├── migrations.go             // Manifest version migrations
-│   │   └── updater.go                // Manifest field updates
+│   │   └── types.go                  // Manifest data structures
 │   │
 │   ├── crypto/                       ===> Cryptography
 │   │   ├── signer.go                 // Create digital signatures
 │   │   ├── verifier.go               // Verify signatures
-│   │   ├── key_manager.go            // Key pair generation & management
+│   │   ├── keygen.go                 // Generate key pairs
 │   │   ├── keystore.go               // Secure key storage
 │   │   ├── certificates.go           // X.509 certificate handling
-│   │   ├── algorithms.go             // Supported crypto algorithms
-│   │   ├── audit_logger.go           // NEW: Security audit logging
-│   │   └── rate_limiter.go           // NEW: Rate limiting for operations
+│   │   └── algorithms.go             // Supported crypto algorithms
 │   │
-│   ├── templates/                    ===> Template System
-│   │   ├── manager.go                // Template management
-│   │   ├── generator.go              // Generate from templates
-│   │   ├── registry.go               // Template registry
-│   │   ├── custom.go                 // Custom template handling
-│   │   └── scaffold.go               // Project scaffolding
-│   │
-│   ├── validator/                    ===> Project Validation
-│   │   ├── project_validator.go      // Comprehensive project validation
-│   │   ├── structure_checker.go      // Directory structure validation
-│   │   ├── compatibility_checker.go  // Platform compatibility
-│   │   ├── security_scanner.go       // Security checks
-│   │   ├── fixer.go                  // Auto-fix validation issues
-│   │   └── vulnerability_scanner.go  // NEW: Vulnerability scanning
-│   │
-│   ├── publisher/                    ===> Upload to Cynk
-│   │   ├── client.go                 // API client for cynk
-│   │   ├── uploader.go               // Package upload logic
-│   │   ├── progress_tracker.go       // Upload progress tracking
-│   │   ├── auth.go                   // Authentication handling
-│   │   └── retry.go                  // Retry logic for uploads
-│   │
-│   ├── ui/                           ===> NEW: Colored UI Components
-│   │   ├── colors.go                 // Color definitions and themes
-│   │   ├── printer.go                // Colored output printing
-│   │   ├── spinner.go                // Animated spinners
-│   │   ├── progress.go               // Progress bars
-│   │   ├── table.go                  // Formatted tables
-│   │   ├── prompt.go                 // Interactive prompts
-│   │   └── logger.go                 // Structured colored logging
-│   │
-│   ├── plugins/                      ===> NEW: Plugin System
-│   │   ├── manager.go                // Plugin lifecycle management
-│   │   ├── registry.go               // Plugin discovery and registration
-│   │   ├── interface.go              // Plugin contracts and interfaces
-│   │   ├── builtin/                  // Core built-in plugins
-│   │   │   ├── security_plugin.go    // Security scanning plugin
-│   │   │   ├── metrics_plugin.go     // Metrics collection plugin
-│   │   │   └── template_plugin.go    // Template extension plugin
-│   │   └── hooks.go                  // Plugin hook system
-│   │
-│   ├── core/                         ===> NEW: Application Core
-│   │   ├── app.go                    // Main application context
-│   │   ├── dependencies.go           // Dependency injection container
-│   │   ├── lifecycle.go              // Startup/shutdown logic
-│   │   └── context.go                // Request context management
-│   │
-│   ├── telemetry/                    ===> NEW: Metrics & Telemetry
-│   │   ├── metrics.go                // Metrics collection and reporting
-│   │   ├── tracing.go                // Distributed tracing
-│   │   ├── events.go                 // Event tracking
-│   │   └── exporter.go               // Telemetry data export
+│   ├── config/                       ===> Configuration Management
+│   │   ├── manager.go                // Configuration loading/saving
+│   │   ├── defaults.go               // Default configurations
+│   │   ├── env.go                    // Environment variable support
+│   │   └── types.go                  // Configuration types
 │   │
 │   └── utils/                        ===> Utilities
 │       ├── fileutils.go              // File system operations
 │       ├── network.go                // HTTP client and utilities
-│       ├── ziputils.go               // Archive utilities
-│       ├── hash.go                   // Hashing utilities
-│       ├── platform.go               // Platform detection
-│       └── errors.go                 // NEW: Enhanced error handling
+│       ├── logging.go                // Structured logging
+│       ├── progress.go               // Progress bars and output
+│       └── errors.go                 // Error handling utilities
 │
-├── types/                            ===> NEW: Shared Type Definitions
-│   ├── cpgx.types.go                 // .cpgx format types
-│   ├── manifest.types.go             // Manifest schema types
-│   ├── crypto.types.go               // Cryptography types
-│   ├── template.types.go             // Template system types
-│   ├── validation.types.go           // Validation result types
-│   ├── publisher.types.go            // Publishing API types
-│   ├── config.types.go               // Configuration types
-│   ├── ui.types.go                   // UI component types
-│   ├── plugin.types.go               // NEW: Plugin system types
-│   ├── core.types.go                 // NEW: Core application types
-│   └── telemetry.types.go            // NEW: Telemetry types
-│
-├── templates/                        ===> Built-in Templates
+├── templates/                        
 │   ├── go-basic/
-│   │   ├── manifest.json
-│   │   ├── src/
-│   │   │   └── main.go
-│   │   ├── bin/
-│   │   └── README.md
 │   ├── go-advanced/
-│   ├── javascript-basic/
-│   ├── typescript-basic/
-│   ├── lua-script/
-│   ├── yaml-workflow/
-│   ├── json-config/
-│   └── custom-template.md           // Template creation guide
-│
-├── internal/
-│   ├── config/                      ===> CLI Configuration
-│   │   ├── manager.go               // Configuration loading/saving
-│   │   ├── defaults.go              // Default configurations
-│   │   ├── env.go                   // Environment variable support
-│   │   └── paths.go                 // Configuration paths
-│   │
-│   └── constants/                   ===> Internal Constants
-│       ├── version.go               // CLI version info
-│       ├── constraints.go           // Size limits, constraints
-│       └── errors.go                // Error constants
+│   ├── js-basic/
+│   ├── ts-basic/
+│   ├── lua-basic/
+│   └── yaml-workflow/
 │
 ├── go.mod
 ├── go.sum
 ├── Makefile
-├── .goreleaser.yml                  // Binary release configuration
 ├── README.md
 └── LICENSE
-
-
-
-
-
-
-0023doja
-jaybolla
