@@ -1,22 +1,22 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Auto Git Push",
-            "type": "shell",
-            "command": "powershell",
-            "args": [
-                "-Command",
-                "git add -A; if ($?) { git commit -m \"Auto-commit: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')\" }; if ($?) { git push }"
-            ],
-            "group": "build",
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared"
-            },
-            "problemMatcher": []
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Auto Git Push",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "git add -A; if ($LASTEXITCODE -eq 0) { $timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'; git commit -m \\\"Auto-commit: $timestamp\\\" }; if ($LASTEXITCODE -eq 0) { git push }"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
 }
