@@ -1,0 +1,147 @@
+cynk-cli/
+├── cmd/
+│   └── cynk/
+│       ├── main.go
+│       ├── build.go
+│       ├── sign.go
+│       ├── validate.go
+│       ├── pack.go
+│       ├── upload.go
+│       └── init.go
+│
+├── internal/
+│   ├── security/
+│   │   ├── scanner/
+│   │   │   ├── go_scanner.go
+│   │   │   ├── source_analyzer.go
+│   │   │   ├── vulnerability_detector.go
+│   │   │   ├── pattern_matcher.go
+│   │   │   └── security_rules.go
+│   │   ├── signer/
+│   │   │   ├── key_manager.go
+│   │   │   ├── signature_manager.go
+│   │   │   ├── certificate_manager.go
+│   │   │   └── trust_manager.go
+│   │   ├── validator/
+│   │   │   ├── structure_validator.go
+│   │   │   ├── manifest_validator.go
+│   │   │   ├── dependency_validator.go
+│   │   │   └── compliance_validator.go
+│   │   └── crypto/
+│   │       ├── checksum_calculator.go
+│   │       ├── hash_manager.go
+│   │       ├── encryption_manager.go
+│   │       └── secure_random.go
+│   │
+│   ├── builder/
+│   │   ├── go_builder.go
+│   │   ├── compiler.go
+│   │   ├── linker.go
+│   │   ├── dependency_resolver.go
+│   │   ├── build_optimizer.go
+│   │   └── cross_compiler.go
+│   │
+│   ├── packager/
+│   │   ├── package_builder.go
+│   │   ├── archive_manager.go
+│   │   ├── metadata_manager.go
+│   │   ├── resource_packer.go
+│   │   └── compression_manager.go
+│   │
+│   ├── templates/
+│   │   ├── go_templates/
+│   │   │   ├── basic_plugin.go.tmpl
+│   │   │   ├── advanced_plugin.go.tmpl
+│   │   │   ├── web_plugin.go.tmpl
+│   │   │   ├── cli_plugin.go.tmpl
+│   │   │   └── api_plugin.go.tmpl
+│   │   ├── template_engine.go
+│   │   ├── template_validator.go
+│   │   └── template_repository.go
+│   │
+│   ├── uploader/
+│   │   ├── http_uploader.go
+│   │   ├── chunked_uploader.go
+│   │   ├── resume_uploader.go
+│   │   ├── progress_tracker.go
+│   │   └── upload_validator.go
+│   │
+│   ├── config/
+│   │   ├── sdk_config.go
+│   │   ├── security_config.go
+│   │   ├── build_config.go
+│   │   ├── upload_config.go
+│   │   └── template_config.go
+│   │
+│   └── utils/
+│       ├── file_utils.go
+│       ├── path_utils.go
+│       ├── network_utils.go
+│       ├── json_utils.go
+│       ├── yaml_utils.go
+│       └── error_utils.go
+│
+├── pkg/
+│   ├── types/
+│   │   ├── plugin_manifest.go
+│   │   ├── security_report.go
+│   │   ├── build_result.go
+│   │   ├── package_metadata.go
+│   │   └── upload_result.go
+│   │
+│   ├── constants/
+│   │   ├── security_constants.go
+│   │   ├── build_constants.go
+│   │   ├── package_constants.go
+│   │   └── error_constants.go
+│   │
+│   └── errors/
+│       ├── security_errors.go
+│       ├── build_errors.go
+│       ├── validation_errors.go
+│       ├── upload_errors.go
+│       └── sdk_errors.go
+│
+├── examples/
+│   ├── basic-plugin/
+│   │   ├── main.go
+│   │   ├── cynk.yaml
+│   │   └── README.md
+│   ├── advanced-plugin/
+│   │   ├── main.go
+│   │   ├── cynk.yaml
+│   │   └── README.md
+│   └── web-plugin/
+│       ├── main.go
+│       ├── cynk.yaml
+│       └── README.md
+│
+├── templates/
+│   ├── basic/
+│   │   ├── main.go.tmpl
+│   │   └── cynk.yaml.tmpl
+│   ├── advanced/
+│   │   ├── main.go.tmpl
+│   │   └── cynk.yaml.tmpl
+│   └── web/
+│       ├── main.go.tmpl
+│       └── cynk.yaml.tmpl
+│
+├── docs/
+│   ├── getting-started.md
+│   ├── security-guide.md
+│   ├── build-guide.md
+│   ├── api-reference.md
+│   └── troubleshooting.md
+│
+├── scripts/
+│   ├── install.sh
+│   ├── setup-dev.sh
+│   ├── generate-certs.sh
+│   └── release.sh
+│
+├── go.mod
+├── go.sum
+├── Makefile
+├── cynk.yaml
+└── README.md

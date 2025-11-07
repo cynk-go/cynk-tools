@@ -1,0 +1,93 @@
+cynk-js-sdk/
+├── src/
+│   ├── cli/
+│   │   ├── index.ts
+│   │   ├── build.ts
+│   │   ├── sign.ts
+│   │   ├── validate.ts
+│   │   ├── pack.ts
+│   │   ├── upload.ts
+│   │   ├── init.ts
+│   │   ├── scan.ts
+│   │   ├── verify.ts
+│   │   ├── keygen.ts
+│   │   └── info.ts
+│   │
+│   ├── ui/
+│   │   ├── colors.ts
+│   │   ├── spinner.ts
+│   │   ├── progress-bar.ts
+│   │   ├── table-formatter.ts
+│   │   ├── command-help.ts
+│   │   ├── interactive-prompt.ts
+│   │   ├── status-indicator.ts
+│   │   └── output-manager.ts
+│   │
+│   ├── security/
+│   │   ├── scanner.ts
+│   │   ├── validator.ts
+│   │   ├── signer.ts
+│   │   ├── crypto.ts
+│   │   └── rules/
+│   │       ├── javascript-rules.ts
+│   │       ├── typescript-rules.ts
+│   │       └── nodejs-rules.ts
+│   ├── builder/
+│   │   ├── js-builder.ts
+│   │   ├── ts-builder.ts
+│   │   ├── packager.ts
+│   │   ├── bundler.ts
+│   │   └── dependency-resolver.ts
+│   ├── packager/
+│   │   ├── package-builder.ts
+│   │   ├── archive-manager.ts
+│   │   ├── metadata-manager.ts
+│   │   ├── resource-packer.ts
+│   │   ├── compression-manager.ts
+│   │   └── package-metadata.ts      # NEW: CPGX metadata embedding
+│   │
+│   ├── templates/
+│   │   ├── basic-js.tmpl
+│   │   ├── advanced-js.tmpl
+│   │   ├── basic-ts.tmpl
+│   │   ├── advanced-ts.tmpl
+│   │   └── template-engine.ts
+│   ├── uploader/
+│   │   └── http-uploader.ts
+│   ├── utils/
+│   │   ├── file-utils.ts
+│   │   ├── config-utils.ts
+│   │   ├── crypto-utils.ts
+│   │   └── validation-utils.ts
+│   └── types/
+│       ├── plugin-manifest.ts
+│       ├── security-report.ts
+│       ├── build-result.ts
+│       ├── package-metadata.ts
+│       └── upload-result.ts
+│
+├── bin/
+│   └── cynk-js
+│
+├── templates/
+│   ├── basic-js/
+│   │   ├── plugin.js.tmpl
+│   │   └── cynk.yaml.tmpl
+│   ├── advanced-js/
+│   │   ├── plugin.js.tmpl
+│   │   └── cynk.yaml.tmpl
+│   ├── basic-ts/
+│   │   ├── plugin.ts.tmpl
+│   │   └── cynk.yaml.tmpl
+│   └── advanced-ts/
+│       ├── plugin.ts.tmpl
+│       └── cynk.yaml.tmpl
+│
+├── docs/
+│   ├── README.md
+│   └── api.md
+│
+├── package.json
+├── tsconfig.json
+├── webpack.config.js
+└── README.md

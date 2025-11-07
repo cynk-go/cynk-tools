@@ -1,0 +1,126 @@
+cynk-lua-sdk/
+├── cmd/
+│   └── cynk-lua/
+│       ├── main.go
+│       ├── build.go
+│       ├── sign.go
+│       ├── validate.go
+│       ├── pack.go
+│       ├── upload.go
+│       ├── init.go
+│       ├── scan.go
+│       ├── verify.go
+│       ├── keygen.go
+│       └── info.go
+│
+├── internal/
+│   ├── ui/
+│   │   ├── colors.go
+│   │   ├── spinner.go
+│   │   ├── progress_bar.go
+│   │   ├── table_formatter.go
+│   │   ├── command_help.go
+│   │   ├── interactive_prompt.go
+│   │   ├── status_indicator.go
+│   │   └── output_manager.go
+│   │
+│   ├── security/
+│   │   ├── scanner/
+│   │   │   ├── lua_scanner.go
+│   │   │   ├── source_analyzer.go
+│   │   │   ├── vulnerability_detector.go
+│   │   │   └── security_rules.go
+│   │   ├── signer/
+│   │   │   ├── key_manager.go
+│   │   │   ├── signature_manager.go
+│   │   │   └── certificate_manager.go
+│   │   ├── validator/
+│   │   │   ├── structure_validator.go
+│   │   │   ├── manifest_validator.go
+│   │   │   └── compliance_validator.go
+│   │   └── crypto/
+│   │       ├── checksum_calculator.go
+│   │       ├── hash_manager.go
+│   │       └── secure_random.go
+│   │
+│   ├── builder/
+│   │   ├── lua_builder.go
+│   │   ├── packager.go
+│   │   └── dependency_resolver.go
+│   │
+│   ├── packager/
+│   │   ├── package_builder.go
+│   │   ├── archive_manager.go
+│   │   ├── metadata_manager.go
+│   │   ├── resource_packer.go
+│   │   ├── compression_manager.go
+│   │   └── package_metadata.go      # NEW: CPGX metadata embedding
+│   │
+│   ├── templates/
+│   │   ├── lua_templates/
+│   │   │   ├── basic_plugin.lua.tmpl
+│   │   │   ├── advanced_plugin.lua.tmpl
+│   │   │   └── web_plugin.lua.tmpl
+│   │   ├── template_engine.go
+│   │   └── template_validator.go
+│   │
+│   ├── uploader/
+│   │   ├── http_uploader.go
+│   │   ├── progress_tracker.go
+│   │   └── upload_validator.go
+│   │
+│   ├── config/
+│   │   ├── sdk_config.go
+│   │   ├── security_config.go
+│   │   ├── build_config.go
+│   │   └── upload_config.go
+│   │
+│   └── utils/
+│       ├── file_utils.go
+│       ├── lua_utils.go
+│       ├── network_utils.go
+│       └── error_utils.go
+│
+├── pkg/
+│   ├── types/
+│   │   ├── plugin_manifest.go
+│   │   ├── security_report.go
+│   │   ├── build_result.go
+│   │   ├── package_metadata.go
+│   │   └── upload_result.go
+│   │
+│   ├── constants/
+│   │   ├── security_constants.go
+│   │   ├── build_constants.go
+│   │   ├── package_constants.go
+│   │   └── error_constants.go
+│   │
+│   └── errors/
+│       ├── security_errors.go
+│       ├── build_errors.go
+│       ├── validation_errors.go
+│       ├── upload_errors.go
+│       └── sdk_errors.go
+│
+├── templates/
+│   ├── basic/
+│   │   ├── plugin.lua.tmpl
+│   │   └── cynk.yaml.tmpl
+│   └── advanced/
+│       ├── plugin.lua.tmpl
+│       └── cynk.yaml.tmpl
+│
+├── docs/
+│   ├── getting-started.md
+│   ├── security-guide.md
+│   ├── build-guide.md
+│   └── api-reference.md
+│
+├── scripts/
+│   ├── install.sh
+│   └── release.sh
+│
+├── go.mod
+├── go.sum
+├── Makefile
+└── README.md
